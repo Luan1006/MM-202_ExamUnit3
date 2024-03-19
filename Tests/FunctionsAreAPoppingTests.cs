@@ -34,6 +34,16 @@ namespace MM202ExamUnit3Tests
         }
 
         [Fact]
+        public void MillimeterToInches_ThrowsException_WhenNegativeMillimetersIsGiven()
+        {
+            // Arrange
+            double millimeters = -25.4;
+
+            // Act and Assert
+            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.MillimeterToInches(millimeters));
+        }
+
+        [Fact]
         public void RootNumber_ReturnsRootedNumber_WhenNumberIsGiven()
         {
             // Arrange
