@@ -32,5 +32,19 @@ namespace MM202ExamUnit3Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void RootNumber_ReturnsRootedNumber_WhenNumberIsGiven()
+        {
+            // Arrange
+            int number = 16;
+            int expected = 4;
+
+            // Act
+            int result = FunctionsAreAPopping.RootNumber(number);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
