@@ -13,17 +13,20 @@ namespace MM202ExamUnit3
             return millimeters / 25.4;
         }
 
-        public static double RootNumber(double num)
+        public static double RootNumber(double number)
         {
-            if (0 == num) { return 0; }
-            double n = (num / 2) + 1;  
-            double n1 = (n + (num / n)) / 2;
-            while (n1 < n)
+            if (0 == number) { return 0; }
+
+            double guess = (number / 2) + 1;
+            double refinedGuess = (guess + (number / guess)) / 2;
+
+            while (refinedGuess < guess)
             {
-                n = n1;
-                n1 = (n + (num / n)) / 2;
+                guess = refinedGuess;
+                refinedGuess = (guess + (number / guess)) / 2;
             }
-            return n;
-        } 
+
+            return guess;
+        }
     }
 }
