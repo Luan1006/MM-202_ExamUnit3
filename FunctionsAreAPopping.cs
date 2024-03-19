@@ -15,7 +15,8 @@ namespace MM202ExamUnit3
 
         public static double RootNumber(double number)
         {
-            if (0 == number) { return 0; }
+            if (number < 0) throw new ArgumentException("Cannot calculate the square root of a negative number");
+            if (number == 0) throw new ArgumentException("Cannot calculate the square root of zero");
 
             double guess = (number / 2) + 1;
             double refinedGuess = (guess + (number / guess)) / 2;
