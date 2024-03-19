@@ -41,6 +41,9 @@ namespace MM202ExamUnit3
             return Constants.PI * (radius * radius);
         }
 
-        
+        public static string Greet(string name)
+        {
+            return $"Hello, {name}!";
+        }
     }
 }
