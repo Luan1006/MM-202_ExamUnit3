@@ -29,5 +29,10 @@ namespace MM202ExamUnit3
 
             return guess;
         }
+
+        public static int CubedNumber(int number)
+        {
+            return number * number * number;
+        }
     }
 }
