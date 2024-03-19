@@ -1,3 +1,4 @@
+using MM202ExamUnit3;
 using Xunit;
 
 namespace MM202ExamUnit3Tests
@@ -12,7 +13,7 @@ namespace MM202ExamUnit3Tests
             int expected = 16;
 
             // Act
-            int result = SquareNumber(number);
+            int result = FunctionsAreAPopping.SquareNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
