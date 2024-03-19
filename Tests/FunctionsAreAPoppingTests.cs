@@ -18,5 +18,19 @@ namespace MM202ExamUnit3Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void MillimeterToInches_ReturnsInches_WhenMillimetersIsGiven()
+        {
+            // Arrange
+            double millimeters = 25.4;
+            double expected = 1;
+
+            // Act
+            double result = FunctionsAreAPopping.MillimeterToInches(millimeters);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
