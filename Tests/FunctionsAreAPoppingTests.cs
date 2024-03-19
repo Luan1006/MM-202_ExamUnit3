@@ -46,5 +46,15 @@ namespace MM202ExamUnit3Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void RootNumber_ThrowsException_WhenNegativeNumberIsGiven()
+        {
+            // Arrange
+            double number = -16;
+
+            // Act and Assert
+            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
+        }
     }
 }
