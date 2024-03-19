@@ -9,7 +9,7 @@ namespace MM202ExamUnit3
 
         public static double MillimeterToInches(double millimeters)
         {
-            if (millimeters < 0) { return 0; }
+            if (millimeters < 0) throw new ArgumentException("Cannot convert negative millimeters to inches");
             return millimeters / 25.4;
         }
 
