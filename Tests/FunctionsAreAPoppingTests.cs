@@ -37,11 +37,11 @@ namespace MM202ExamUnit3Tests
         public void RootNumber_ReturnsRootedNumber_WhenNumberIsGiven()
         {
             // Arrange
-            int number = 16;
-            int expected = 4;
+            double number = 16;
+            double expected = 4;
 
             // Act
-            int result = FunctionsAreAPopping.RootNumber(number);
+            double result = FunctionsAreAPopping.RootNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
