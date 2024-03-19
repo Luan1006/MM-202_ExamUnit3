@@ -56,5 +56,15 @@ namespace MM202ExamUnit3Tests
             // Act and Assert
             Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
         }
+
+        [Fact]
+        public void ThrowsException_WhenZeroIsGiven()
+        {
+            // Arrange
+            double number = 0;
+
+            // Act and Assert
+            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
+        }
     }
 }
