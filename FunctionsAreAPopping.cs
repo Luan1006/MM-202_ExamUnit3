@@ -6,5 +6,10 @@ namespace MM202ExamUnit3
         {
             return number * number;
         }
+
+        public static double MillimeterToInches(double millimeters)
+        {
+            return millimeters / 25.4;
+        }
     }
 }
