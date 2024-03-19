@@ -104,5 +104,15 @@ namespace MM202ExamUnit3Tests
             // Assert
             Assert.Equal(expected, result, 2);
         }
+
+        [Fact]
+        public void AreaOfCircle_ThrowsException_WhenNegativeRadiusIsGiven()
+        {
+            // Arrange
+            double radius = -5;
+
+            // Act and Assert
+            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.AreaOfCircle(radius));
+        }
     }
 }
