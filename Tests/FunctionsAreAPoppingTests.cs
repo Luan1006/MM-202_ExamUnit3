@@ -90,5 +90,19 @@ namespace MM202ExamUnit3Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void AreaOfCircle_ReturnsArea_WhenRadiusIsGiven()
+        {
+            // Arrange
+            double radius = 5;
+            double expected = 78.54;
+
+            // Act
+            double result = FunctionsAreAPopping.AreaOfCircle(radius);
+
+            // Assert
+            Assert.Equal(expected, result, 2);
+        }
     }
 }
