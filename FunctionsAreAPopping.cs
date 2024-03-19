@@ -34,5 +34,11 @@ namespace MM202ExamUnit3
         {
             return number * number * number;
         }
+
+        public static double AreaOfCircle(double radius)
+        {
+            if (radius < 0) throw new ArgumentException("Cannot calculate the area of a circle with a negative radius");
+            return Constants.PI * (radius * radius);
+        }
     }
 }
