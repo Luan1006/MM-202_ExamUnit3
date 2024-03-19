@@ -76,5 +76,19 @@ namespace MM202ExamUnit3Tests
             // Act and Assert
             Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
         }
+
+        [Fact]
+        public void CubedNumber_ReturnsCubedNumber_WhenNumberIsGiven()
+        {
+            // Arrange
+            int number = 4;
+            int expected = 64;
+
+            // Act
+            int result = FunctionsAreAPopping.CubedNumber(number);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
