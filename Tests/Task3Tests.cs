@@ -32,21 +32,5 @@ namespace MM202ExamUnit3.Tests
             Assert.Equal(4, result.Depth);
             Assert.Equal(5, result.Count);
         }
-
-        [Fact]
-        public void ProcessTree_ReturnsTreeInfo_WhenJsonStringIsGiven()
-        {
-            // Arrange
-            var task3 = new Task3();
-            var json = "{\"Value\":67,\"Left\":{\"Value\":765},\"Right\":{\"Value\":167,\"Left\":{\"Value\":564,\"Right\":{\"Value\":379}}}}";
-
-            // Act
-            var result = task3.ProcessTree(json);
-
-            // Assert
-            Assert.Equal(1942, result.Sum);
-            Assert.Equal(4, result.Depth);
-            Assert.Equal(5, result.Count);
-        }
     }
 }

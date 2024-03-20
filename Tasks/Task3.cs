@@ -35,17 +35,5 @@ namespace MM202ExamUnit3
 
             return new TreeInfo { Sum = sum, Depth = depth, Count = count };
         }
-
-        public TreeInfo ProcessTree(string json)
-        {
-            Node root = JsonSerializer.Deserialize<Node>(json);
-
-            TreeInfo result = Traverse(root);
-            Console.WriteLine($"Sum = {result.Sum}");
-            Console.WriteLine($"Deepest level = {result.Depth}");
-            Console.WriteLine($"Nodes = {result.Count}");
-
-            return result;
-        }
     }
 }
