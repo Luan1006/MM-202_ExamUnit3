@@ -20,7 +20,8 @@ class Program
             Console.WriteLine($"Jagged array: {doc.RootElement}");
 
             int[] flattenedArray = FlattenJsonArray(doc);
-            PrintArray(flattenedArray);
+            string printArray = string.Join(", ", flattenedArray);
+            Console.WriteLine($"Flattened array: [{printArray}]");
         }
         catch (HttpRequestException e)
         {
@@ -47,12 +48,6 @@ class Program
         int[] array = ProcessJsonElement(doc.RootElement);
         object[] objectArray = array.Cast<object>().ToArray();
         return MM202ExamUnit3.FlattenThoseNumbers.FlattenArray(objectArray);
-    }
-
-    static void PrintArray(int[] array)
-    {
-        string printArray = string.Join(", ", array);
-        Console.WriteLine($"Flattened array: [{printArray}]");
     }
 
     static int[] ProcessJsonElement(JsonElement element)
