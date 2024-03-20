@@ -102,6 +102,8 @@ namespace MM202ExamUnit3
             {
                 PrintErrorMessage(e.Message);
             }
+
+            Console.WriteLine("\nWelcome to the Fantastic Book Sorter!\n");
         }
     }
 }

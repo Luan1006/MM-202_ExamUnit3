@@ -1,5 +1,3 @@
-using System.Text.Json;
-
 namespace MM202ExamUnit3
 {
     public class Task3
