@@ -12,7 +12,8 @@ class Program
             Console.WriteLine("Calling the API...");
 
             HttpResponseMessage response = await GetApiResponse("https://crismo-turquoisejaguar.web.val.run/arrayI");
-            JsonDocument doc = await ParseJsonResponse(response);
+            string responseBody = await response.Content.ReadAsStringAsync();
+            JsonDocument doc = ParseJsonString(responseBody);
 
             Console.WriteLine($"Jagged array: {doc.RootElement}");
 
@@ -34,10 +35,9 @@ class Program
         return response;
     }
 
-    static async Task<JsonDocument> ParseJsonResponse(HttpResponseMessage response)
+    static JsonDocument ParseJsonString(string json)
     {
-        string responseBody = await response.Content.ReadAsStringAsync();
-        return JsonDocument.Parse(responseBody);
+        return JsonDocument.Parse(json);
     }
 
     static int[] FlattenJsonArray(JsonDocument doc)
