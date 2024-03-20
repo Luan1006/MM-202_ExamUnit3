@@ -2,7 +2,7 @@ namespace MM202ExamUnit3
 {
     class FunctionsAreAPopping
     {
-        public static int SquareNumber(int number)
+        public static double SquareNumber(double number)
         {
             return number * number;
         }
@@ -30,7 +30,7 @@ namespace MM202ExamUnit3
             return guess;
         }
 
-        public static int CubedNumber(int number)
+        public static double CubedNumber(double number)
         {
             return number * number * number;
         }

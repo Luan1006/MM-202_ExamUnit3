@@ -9,11 +9,11 @@ namespace MM202ExamUnit3Tests
         public void SquareNumber_ReturnsSquaredNumber_WhenNumberIsGiven()
         {
             // Arrange
-            int number = 4;
-            int expected = 16;
+            double number = 4;
+            double expected = 16;
 
             // Act
-            int result = FunctionsAreAPopping.SquareNumber(number);
+            double result = FunctionsAreAPopping.SquareNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
@@ -81,11 +81,11 @@ namespace MM202ExamUnit3Tests
         public void CubedNumber_ReturnsCubedNumber_WhenNumberIsGiven()
         {
             // Arrange
-            int number = 4;
-            int expected = 64;
+            double number = 4;
+            double expected = 64;
 
             // Act
-            int result = FunctionsAreAPopping.CubedNumber(number);
+            double result = FunctionsAreAPopping.CubedNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
