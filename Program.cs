@@ -11,9 +11,11 @@ namespace MM202ExamUnit3
 
         static async Task Main()
         {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Jagged Array Flattener!\n");
+
             try
             {
-                Console.Clear();
                 Console.WriteLine("Calling the API...");
 
                 HttpResponseMessage response = await apiService.GetApiResponse(Constants.JaggedAPIURL);
@@ -47,6 +49,38 @@ namespace MM202ExamUnit3
                 Console.WriteLine($"Flattened array: [{arrayToWrite}]");
             }
             catch (Exception e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+            Console.WriteLine("\nWelcome to the Binary Tree Traverser!\n");
+
+            try
+            {
+                Console.WriteLine("Calling the API...");
+
+                HttpResponseMessage response = await apiService.GetApiResponse(Constants.BSTAPIURL);
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                Task3 task3 = new Task3();
+
+                Console.WriteLine($"Binary tree: {responseBody}");
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
+
+                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(responseBody, options);
+
+                Task3.TreeInfo treeInfo = task3.Traverse(root);
+
+                Console.WriteLine($"Sum = {treeInfo.Sum}");
+                Console.WriteLine($"Deepest level = {treeInfo.Depth}");
+                Console.WriteLine($"Nodes = {treeInfo.Count}");
+            }
+            catch (HttpRequestException e)
             {
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);

@@ -1,7 +1,6 @@
-using MM202ExamUnit3;
 using Xunit;
 
-namespace MM202ExamUnit3Tests
+namespace MM202ExamUnit3.Tests
 {
     public class Task1Tests
     {

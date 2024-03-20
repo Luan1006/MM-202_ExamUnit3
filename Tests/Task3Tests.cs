@@ -1,34 +1,52 @@
 using Xunit;
-using MM202ExamUnit3;
 
-public class Task3Tests
+namespace MM202ExamUnit3.Tests
 {
-    [Fact]
-    public void Traverse_ReturnsTreeInfo_WhenBinaryTreeIsGiven()
+    public class Task3Tests
     {
-        // Arrange
-        var task3 = new Task3();
-        var node = new Task3.Node
+        [Fact]
+        public void Traverse_ReturnsTreeInfo_WhenBinaryTreeIsGiven()
         {
-            Value = 67,
-            Left = new Task3.Node { Value = 765 },
-            Right = new Task3.Node
+            // Arrange
+            var task3 = new Task3();
+            var node = new Task3.Node
             {
-                Value = 167,
-                Left = new Task3.Node
+                Value = 67,
+                Left = new Task3.Node { Value = 765 },
+                Right = new Task3.Node
                 {
-                    Value = 564,
-                    Right = new Task3.Node { Value = 379 }
+                    Value = 167,
+                    Left = new Task3.Node
+                    {
+                        Value = 564,
+                        Right = new Task3.Node { Value = 379 }
+                    }
                 }
-            }
-        };
+            };
 
-        // Act
-        var result = task3.Traverse(node);
+            // Act
+            var result = task3.Traverse(node);
 
-        // Assert
-        Assert.Equal(1942, result.Sum);
-        Assert.Equal(4, result.Depth);
-        Assert.Equal(5, result.Count);
+            // Assert
+            Assert.Equal(1942, result.Sum);
+            Assert.Equal(4, result.Depth);
+            Assert.Equal(5, result.Count);
+        }
+
+        [Fact]
+        public void ProcessTree_ReturnsTreeInfo_WhenJsonStringIsGiven()
+        {
+            // Arrange
+            var task3 = new Task3();
+            var json = "{\"Value\":67,\"Left\":{\"Value\":765},\"Right\":{\"Value\":167,\"Left\":{\"Value\":564,\"Right\":{\"Value\":379}}}}";
+
+            // Act
+            var result = task3.ProcessTree(json);
+
+            // Assert
+            Assert.Equal(1942, result.Sum);
+            Assert.Equal(4, result.Depth);
+            Assert.Equal(5, result.Count);
+        }
     }
 }
