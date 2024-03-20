@@ -1,6 +1,6 @@
 namespace MM202ExamUnit3
 {
-    class FunctionsAreAPopping
+    class Task1
     {
         public static double SquareNumber(double number)
         {

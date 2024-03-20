@@ -3,7 +3,7 @@ using Xunit;
 
 namespace MM202ExamUnit3Tests
 {
-    public class FunctionsAreAPoppingTests
+    public class Task1Tests
     {
         [Fact]
         public void SquareNumber_ReturnsSquaredNumber_WhenNumberIsGiven()
@@ -13,7 +13,7 @@ namespace MM202ExamUnit3Tests
             double expected = 16;
 
             // Act
-            double result = FunctionsAreAPopping.SquareNumber(number);
+            double result = Task1.SquareNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
@@ -27,7 +27,7 @@ namespace MM202ExamUnit3Tests
             double expected = 1;
 
             // Act
-            double result = FunctionsAreAPopping.MillimeterToInches(millimeters);
+            double result = Task1.MillimeterToInches(millimeters);
 
             // Assert
             Assert.Equal(expected, result);
@@ -40,7 +40,7 @@ namespace MM202ExamUnit3Tests
             double millimeters = -25.4;
 
             // Act and Assert
-            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.MillimeterToInches(millimeters));
+            Assert.Throws<ArgumentException>(() => Task1.MillimeterToInches(millimeters));
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace MM202ExamUnit3Tests
             double expected = 4;
 
             // Act
-            double result = FunctionsAreAPopping.RootNumber(number);
+            double result = Task1.RootNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
@@ -64,7 +64,7 @@ namespace MM202ExamUnit3Tests
             double number = -16;
 
             // Act and Assert
-            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
+            Assert.Throws<ArgumentException>(() => Task1.RootNumber(number));
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace MM202ExamUnit3Tests
             double number = 0;
 
             // Act and Assert
-            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.RootNumber(number));
+            Assert.Throws<ArgumentException>(() => Task1.RootNumber(number));
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace MM202ExamUnit3Tests
             double expected = 64;
 
             // Act
-            double result = FunctionsAreAPopping.CubedNumber(number);
+            double result = Task1.CubedNumber(number);
 
             // Assert
             Assert.Equal(expected, result);
@@ -99,7 +99,7 @@ namespace MM202ExamUnit3Tests
             double expected = 78.54;
 
             // Act
-            double result = FunctionsAreAPopping.AreaOfCircle(radius);
+            double result = Task1.AreaOfCircle(radius);
 
             // Assert
             Assert.Equal(expected, result, 2);
@@ -112,7 +112,7 @@ namespace MM202ExamUnit3Tests
             double radius = -5;
 
             // Act and Assert
-            Assert.Throws<ArgumentException>(() => FunctionsAreAPopping.AreaOfCircle(radius));
+            Assert.Throws<ArgumentException>(() => Task1.AreaOfCircle(radius));
         }
     }
 }
