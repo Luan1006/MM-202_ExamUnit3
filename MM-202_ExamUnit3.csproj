@@ -6,6 +6,7 @@
     <RootNamespace>MM_202_ExamUnit3</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartupObject>Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
