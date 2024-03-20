@@ -1,4 +1,4 @@
-namespace MM202ExamUnit3
+namespace MM202ExamUnit3.Utils
 {
     public class Constants
     {
