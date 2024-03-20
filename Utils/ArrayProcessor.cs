@@ -8,7 +8,7 @@ namespace MM202ExamUnit3.Utils
         {
             int[] array = ProcessJsonElement(doc.RootElement);
             object[] objectArray = array.Cast<object>().ToArray();
-            return MM202ExamUnit3.Task2.FlattenArray(objectArray);
+            return Task2.FlattenArray(objectArray);
         }
 
         private int[] ProcessJsonElement(JsonElement element)
