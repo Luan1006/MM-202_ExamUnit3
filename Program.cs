@@ -31,6 +31,27 @@ namespace MM202ExamUnit3
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
+
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Reading the JSON file...");
+
+                string jsonFilePath = Path.Combine("Tests", "Files", "arrays.json");
+                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+                JsonDocument doc = JsonDocument.Parse(jsonContent);
+
+                Console.WriteLine($"Jagged array: {doc.RootElement}");
+
+                int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
+                string arrayToWrite = string.Join(", ", flattenedArray);
+                Console.WriteLine($"Flattened array: [{arrayToWrite}]");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
         }
     }
 }

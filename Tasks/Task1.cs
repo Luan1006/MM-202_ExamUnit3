@@ -1,3 +1,5 @@
+using MM202ExamUnit3.Utils;
+
 namespace MM202ExamUnit3
 {
     class Task1
