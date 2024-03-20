@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace MM202ExamUnit3
 {
     public class Task3
@@ -24,14 +26,24 @@ namespace MM202ExamUnit3
                 return new TreeInfo { Sum = 0, Depth = 0, Count = 0 };
             }
 
-            var left = Traverse(node.Left);
-            var right = Traverse(node.Right);
+            TreeInfo left = Traverse(node.Left);
+            TreeInfo right = Traverse(node.Right);
 
-            var sum = node.Value + left.Sum + right.Sum;
-            var depth = Math.Max(left.Depth, right.Depth) + 1;
-            var count = left.Count + right.Count + 1;
+            int sum = node.Value + left.Sum + right.Sum;
+            int depth = Math.Max(left.Depth, right.Depth) + 1;
+            int count = left.Count + right.Count + 1;
 
             return new TreeInfo { Sum = sum, Depth = depth, Count = count };
+        }
+
+        public void ProcessTree(string json)
+        {
+            Node root = JsonSerializer.Deserialize<Node>(json);
+
+            TreeInfo result = Traverse(root);
+            Console.WriteLine($"Sum = {result.Sum}");
+            Console.WriteLine($"Deepest level = {result.Depth}");
+            Console.WriteLine($"Nodes = {result.Count}");
         }
     }
 }

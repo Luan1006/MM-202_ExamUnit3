@@ -24,7 +24,7 @@ namespace MM202ExamUnit3
 
                 int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
                 string arrayToWrite = string.Join(", ", flattenedArray);
-                Console.WriteLine($"Flattened array: [{arrayToWrite}]");
+                Console.WriteLine($"Flattened array: [{arrayToWrite}]\n");
             }
             catch (HttpRequestException e)
             {
@@ -34,14 +34,13 @@ namespace MM202ExamUnit3
 
             try
             {
-                Console.Clear();
                 Console.WriteLine("Reading the JSON file...");
 
-                string jsonFilePath = Path.Combine("Tests", "Files", "arrays.json");
+                string jsonFilePath = Path.Combine("ExampleFiles", "arrays.json");
                 string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
 
-                Console.WriteLine($"Jagged array: {doc.RootElement}");
+                Console.WriteLine($"Jagged array:\n{doc.RootElement}");
 
                 int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
                 string arrayToWrite = string.Join(", ", flattenedArray);
