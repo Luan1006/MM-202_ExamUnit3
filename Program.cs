@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using MM202ExamUnit3.Utils;
+using static MM202ExamUnit3.Utils.Print;
 
 namespace MM202ExamUnit3
 {
@@ -30,8 +31,7 @@ namespace MM202ExamUnit3
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                PrintErrorMessage(e.Message);
             }
 
             try
@@ -50,8 +50,7 @@ namespace MM202ExamUnit3
             }
             catch (Exception e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                PrintErrorMessage(e.Message);
             }
 
             Console.WriteLine("\nWelcome to the Binary Tree Traverser!\n");
@@ -77,8 +76,31 @@ namespace MM202ExamUnit3
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                PrintErrorMessage(e.Message);
+            }
+
+            try
+            {
+                Console.WriteLine("Reading the JSON file...");
+
+                string jsonFilePath = Path.Combine("ExampleFiles", "nodes.json");
+                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+
+                Task3 task3 = new Task3();
+
+                Console.WriteLine($"Binary tree: {jsonContent}");
+
+                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(jsonContent);
+
+                Task3.TreeInfo treeInfo = task3.Traverse(root);
+
+                Console.WriteLine($"Sum = {treeInfo.Sum}");
+                Console.WriteLine($"Deepest level = {treeInfo.Depth}");
+                Console.WriteLine($"Nodes = {treeInfo.Count}");
+            }
+            catch (Exception e)
+            {
+                PrintErrorMessage(e.Message);
             }
         }
     }
