@@ -20,8 +20,8 @@ class Program
             Console.WriteLine($"Jagged array: {doc.RootElement}");
 
             int[] flattenedArray = FlattenJsonArray(doc);
-            string printArray = string.Join(", ", flattenedArray);
-            Console.WriteLine($"Flattened array: [{printArray}]");
+            string arrayToWrite = string.Join(", ", flattenedArray);
+            Console.WriteLine($"Flattened array: [{arrayToWrite}]");
         }
         catch (HttpRequestException e)
         {
