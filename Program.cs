@@ -67,12 +67,7 @@ namespace MM202ExamUnit3
 
                 Console.WriteLine($"Binary tree: {responseBody}");
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                };
-
-                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(responseBody, options);
+                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(responseBody);
 
                 Task3.TreeInfo treeInfo = task3.Traverse(root);
 

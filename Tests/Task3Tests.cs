@@ -11,15 +11,15 @@ namespace MM202ExamUnit3.Tests
             var task3 = new Task3();
             var node = new Task3.Node
             {
-                Value = 67,
-                Left = new Task3.Node { Value = 765 },
-                Right = new Task3.Node
+                value = 67,
+                left = new Task3.Node { value = 765 },
+                right = new Task3.Node
                 {
-                    Value = 167,
-                    Left = new Task3.Node
+                    value = 167,
+                    left = new Task3.Node
                     {
-                        Value = 564,
-                        Right = new Task3.Node { Value = 379 }
+                        value = 564,
+                        right = new Task3.Node { value = 379 }
                     }
                 }
             };
