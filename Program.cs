@@ -1,10 +1,13 @@
 ﻿using System.Text.Json;
+using MM202ExamUnit3.Utils;
 
 namespace MM202ExamUnit3
 {
     class Program
     {
         static readonly HttpClient client = new HttpClient();
+        static readonly ApiService apiService = new ApiService(client);
+        static readonly ArrayProcessor arrayProcessor = new ArrayProcessor();
 
         static async Task Main()
         {
@@ -13,13 +16,13 @@ namespace MM202ExamUnit3
                 Console.Clear();
                 Console.WriteLine("Calling the API...");
 
-                HttpResponseMessage response = await GetApiResponse(Constants.JaggedAPIURL);
+                HttpResponseMessage response = await apiService.GetApiResponse(Constants.JaggedAPIURL);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                JsonDocument doc = ParseJsonString(responseBody);
+                JsonDocument doc = apiService.ParseJsonString(responseBody);
 
                 Console.WriteLine($"Jagged array: {doc.RootElement}");
 
-                int[] flattenedArray = FlattenJsonArray(doc);
+                int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
                 string arrayToWrite = string.Join(", ", flattenedArray);
                 Console.WriteLine($"Flattened array: [{arrayToWrite}]");
             }
@@ -28,44 +31,6 @@ namespace MM202ExamUnit3
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
-        }
-
-        static async Task<HttpResponseMessage> GetApiResponse(string url)
-        {
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            return response;
-        }
-
-        static JsonDocument ParseJsonString(string json)
-        {
-            return JsonDocument.Parse(json);
-        }
-
-        static int[] FlattenJsonArray(JsonDocument doc)
-        {
-            int[] array = ProcessJsonElement(doc.RootElement);
-            object[] objectArray = array.Cast<object>().ToArray();
-            return MM202ExamUnit3.Task2.FlattenArray(objectArray);
-        }
-
-        static int[] ProcessJsonElement(JsonElement element)
-        {
-            var result = new List<int>();
-
-            if (element.ValueKind == JsonValueKind.Array)
-            {
-                foreach (JsonElement childElement in element.EnumerateArray())
-                {
-                    result.AddRange(ProcessJsonElement(childElement));
-                }
-            }
-            else if (element.ValueKind == JsonValueKind.Number)
-            {
-                result.Add(element.GetInt32());
-            }
-
-            return result.ToArray();
         }
     }
 }
