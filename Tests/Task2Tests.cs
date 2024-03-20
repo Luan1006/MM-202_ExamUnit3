@@ -3,7 +3,7 @@ using MM202ExamUnit3;
 
 namespace MM202ExamUnit3Tests
 {
-    public class FlattenThoseNumbersTests
+    public class Task2Tests
     {
         [Fact]
         public void FlattenArray_ReturnsFlatArray_WhenJaggedArrayIsGiven()
@@ -13,7 +13,7 @@ namespace MM202ExamUnit3Tests
             int[] expected = { 1, 2, 3, 4, 5, 6, 7 };
 
             // Act
-            int[] actual = FlattenThoseNumbers.FlattenArray(input);
+            int[] actual = Task2.FlattenArray(input);
 
             // Assert
             Assert.Equal(expected, actual);

@@ -46,7 +46,7 @@ namespace MM202ExamUnit3
         {
             int[] array = ProcessJsonElement(doc.RootElement);
             object[] objectArray = array.Cast<object>().ToArray();
-            return MM202ExamUnit3.FlattenThoseNumbers.FlattenArray(objectArray);
+            return MM202ExamUnit3.Task2.FlattenArray(objectArray);
         }
 
         static int[] ProcessJsonElement(JsonElement element)

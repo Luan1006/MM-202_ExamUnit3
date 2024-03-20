@@ -1,6 +1,6 @@
 namespace MM202ExamUnit3
 {
-    public class FlattenThoseNumbers
+    public class Task2
     {
         public static int[] FlattenArray(object[] arr)
         {
