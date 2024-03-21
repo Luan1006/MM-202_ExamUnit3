@@ -8,8 +8,8 @@ namespace MM202ExamUnit3.Tests
         public void Traverse_ReturnsTreeInfo_WhenBinaryTreeIsGiven()
         {
             // Arrange
-            var task3 = new Task3();
-            var node = new Task3.Node
+            Task3 task3 = new Task3();
+            Task3.Node node = new Task3.Node
             {
                 value = 67,
                 left = new Task3.Node { value = 765 },
@@ -25,7 +25,7 @@ namespace MM202ExamUnit3.Tests
             };
 
             // Act
-            var result = task3.Traverse(node);
+            Task3.TreeInfo result = task3.Traverse(node);
 
             // Assert
             Assert.Equal(1942, result.Sum);
