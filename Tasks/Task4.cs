@@ -23,5 +23,10 @@ namespace MM202ExamUnit3
             books = books.Where(b => b.title.StartsWith("The")).ToList();
             return books.ToArray();
         }
+
+        public Book[] GetBooksWrittenByAuthorsWithATInTheirName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -22,5 +22,23 @@ namespace MM202ExamUnit3.Tests
                 Assert.True(book.title.StartsWith("The"));
             }
         }
+        
+        [Fact]
+        public void GetBooksWrittenByAuthorsWithATInTheirName_ReturnsJsonWithBooksWrittenByAuthorsWithATInTheirName_WhenJsonOfBooksAreGiven()
+        {
+            // Arrange
+            string jsonFilePath = Path.Combine("..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
+
+            // Act
+            Book[] books = task4.GetBooksWrittenByAuthorsWithATInTheirName();
+
+            // Assert that all book authors have "a" or "A" in their name
+            foreach (Book book in books)
+            {
+                Assert.True(book.author.Contains("a") || book.author.Contains("A"));
+            }
+        }
     }
 }
