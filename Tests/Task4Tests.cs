@@ -101,6 +101,36 @@ namespace MM202ExamUnit3.Tests
             Assert.Empty(books);
         }
 
+        [Fact]
+        public void GetBooksWrittenBefore2004_ReturnsJsonWithBooksWrittenBefore2004_WhenJsonOfBooksAreGiven()
+        {
+            // Arrange
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
 
+            // Act
+            Book[] books = task4.GetBooksWrittenBefore2004();
+
+            // Assert that all book publication years are before 2004
+            foreach (Book book in books)
+            {
+                Assert.True(book.publication_year < 2004);
+            }
+        }
+
+        [Fact]
+        public void GetBooksWrittenBefore2004_ReturnsEmptyJson_WhenEmptyJsonIsGiven()
+        {
+            // Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            // Act
+            Book[] books = task4.GetBooksWrittenBefore2004();
+
+            // Assert
+            Assert.Empty(books);
+        }
     }
 }
