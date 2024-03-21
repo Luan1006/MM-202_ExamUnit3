@@ -24,6 +24,20 @@ namespace MM202ExamUnit3.Tests
         }
 
         [Fact]
+        public void GetBooksStartingWithThe_ReturnsEmptyJson_WhenEmptyJsonIsGiven()
+        {
+            // Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            // Act
+            Book[] books = task4.GetBooksStartingWithThe();
+
+            // Assert
+            Assert.Empty(books);
+        }
+
+        [Fact]
         public void GetBooksWrittenByAuthorsWithATInTheirName_ReturnsJsonWithBooksWrittenByAuthorsWithATInTheirName_WhenJsonOfBooksAreGiven()
         {
             // Arrange
@@ -40,5 +54,21 @@ namespace MM202ExamUnit3.Tests
                 Assert.True(book.author.Contains("t"));
             }
         }
+
+        [Fact]
+        public void GetBooksWrittenByAuthorsWithATInTheirName_ReturnsEmptyJson_WhenEmptyJsonIsGiven()
+        {
+            // Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            // Act
+            Book[] books = task4.GetBooksWrittenByAuthorsWithATInTheirName();
+
+            // Assert
+            Assert.Empty(books);
+        }
+
+        
     }
 }
