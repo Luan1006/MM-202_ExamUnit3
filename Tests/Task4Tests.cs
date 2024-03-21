@@ -9,7 +9,7 @@ namespace MM202ExamUnit3.Tests
         public void GetBooksStartingWithThe_ReturnsJsonWithBooksStartingWithThe_WhenJsonOfBooksAreGiven()
         {
             // Arrange
-            string jsonFilePath = Path.Combine("..", "ExampleFiles", "books.json");
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
             string jsonContent = File.ReadAllText(jsonFilePath);
             Task4 task4 = new Task4(jsonContent);
 
