@@ -38,7 +38,8 @@ namespace MM202ExamUnit3
 
         public Book[] GetBooksWrittenBefore2004()
         {
-            throw new NotImplementedException();
+            Book[] result = books.Where(b => b.publication_year < 2004).ToArray();
+            return result;
         }
     }
 }
