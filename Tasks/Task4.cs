@@ -11,7 +11,7 @@ namespace MM202ExamUnit3
     }
     public class Task4
     {
-        private List<Book> books;
+        public List<Book> books;
 
         public Task4(string jsonContent)
         {
@@ -44,7 +44,8 @@ namespace MM202ExamUnit3
 
         public string[] GetIsbnNumberByAuthor(string author)
         {
-            throw new NotImplementedException();
+            string[] result = books.Where(b => b.author == author).Select(b => b.isbn).ToArray();
+            return result;
         }
     }
 }

@@ -9,10 +9,13 @@ namespace MM202ExamUnit3
         static readonly HttpClient client = new HttpClient();
         static readonly ApiService apiService = new ApiService(client);
         static readonly ArrayProcessor arrayProcessor = new ArrayProcessor();
+        static string jsonFilePath = "";
+        static string jsonContent = "";
 
         static async Task Main()
         {
             Console.Clear();
+
             Console.WriteLine("Welcome to the Jagged Array Flattener!\n");
 
             try
@@ -38,8 +41,8 @@ namespace MM202ExamUnit3
             {
                 Console.WriteLine("Reading the JSON file...");
 
-                string jsonFilePath = Path.Combine("ExampleFiles", "arrays.json");
-                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+                jsonFilePath = Path.Combine("ExampleFiles", "arrays.json");
+                jsonContent = await File.ReadAllTextAsync(jsonFilePath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
 
                 Console.WriteLine($"Jagged array:\n{doc.RootElement}");
@@ -83,8 +86,8 @@ namespace MM202ExamUnit3
             {
                 Console.WriteLine("Reading the JSON file...");
 
-                string jsonFilePath = Path.Combine("ExampleFiles", "nodes.json");
-                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+                jsonFilePath = Path.Combine("ExampleFiles", "nodes.json");
+                jsonContent = await File.ReadAllTextAsync(jsonFilePath);
 
                 Task3 task3 = new Task3();
 

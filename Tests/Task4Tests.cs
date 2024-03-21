@@ -133,6 +133,7 @@ namespace MM202ExamUnit3.Tests
             Assert.Empty(books);
         }
 
+        [Fact]
         public void GetIsbnNumberByAuthor_ReturnsEmptyArray_WhenEmptyJsonIsGiven()
         {
             // Arrange
@@ -150,18 +151,19 @@ namespace MM202ExamUnit3.Tests
         public void GetIsbnNumberByAuthor_ReturnsIsbnNumber_WhenJsonOfBooksAreGiven()
         {
             // Arrange
+            string author = "Terry Pratchett";
             string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
             string jsonContent = File.ReadAllText(jsonFilePath);
             Task4 task4 = new Task4(jsonContent);
 
             // Act
-            string[] isbnNumbers = task4.GetIsbnNumberByAuthor("Terry Pratchett");
+            string[] isbnNumbers = task4.GetIsbnNumberByAuthor(author);
 
-            // Assert that the returned ISBN numbers correspond to books written by "Terry Pratchett"
+            // Assert
             foreach (string isbn in isbnNumbers)
             {
                 Book book = task4.books.First(b => b.isbn == isbn);
-                Assert.True(book.author == "Terry Pratchett");
+                Assert.Contains(author, book.author);
             }
         }
     }
