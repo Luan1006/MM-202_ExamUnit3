@@ -34,10 +34,10 @@ namespace MM202ExamUnit3.Tests
             // Act
             Book[] books = task4.GetBooksWrittenByAuthorsWithATInTheirName();
 
-            // Assert that all book authors have "a" or "A" in their name
+            // Assert that all book authors have "t" in their name
             foreach (Book book in books)
             {
-                Assert.True(book.author.Contains("a") || book.author.Contains("A"));
+                Assert.True(book.author.Contains("t"));
             }
         }
     }

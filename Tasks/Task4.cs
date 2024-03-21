@@ -26,7 +26,8 @@ namespace MM202ExamUnit3
 
         public Book[] GetBooksWrittenByAuthorsWithATInTheirName()
         {
-            throw new NotImplementedException();
+            books = books.Where(b => b.author.Contains("t")).ToList();
+            return books.ToArray();
         }
     }
 }
