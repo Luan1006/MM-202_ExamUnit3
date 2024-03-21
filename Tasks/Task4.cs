@@ -41,5 +41,10 @@ namespace MM202ExamUnit3
             Book[] result = books.Where(b => b.publication_year < 2004).ToArray();
             return result;
         }
+
+        public Book[] GetIsbnNumberByAuthor(string author)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
