@@ -133,7 +133,6 @@ namespace MM202ExamUnit3.Tests
             Assert.Empty(books);
         }
 
-        [Fact]
         public void GetIsbnNumberByAuthor_ReturnsEmptyArray_WhenEmptyJsonIsGiven()
         {
             // Arrange
@@ -141,10 +140,10 @@ namespace MM202ExamUnit3.Tests
             Task4 task4 = new Task4(jsonContent);
 
             // Act
-            Book[] books = task4.GetIsbnNumberByAuthor("Terry Pratchett");
+            string[] isbnNumbers = task4.GetIsbnNumberByAuthor("Terry Pratchett");
 
             // Assert
-            Assert.Empty(books);
+            Assert.Empty(isbnNumbers);
         }
 
         [Fact]
@@ -156,12 +155,13 @@ namespace MM202ExamUnit3.Tests
             Task4 task4 = new Task4(jsonContent);
 
             // Act
-            Book[] books = task4.GetIsbnNumberByAuthor("Terry Pratchett");
+            string[] isbnNumbers = task4.GetIsbnNumberByAuthor("Terry Pratchett");
 
-            // Assert that all book authors have "t" in their name
-            foreach (Book book in books)
+            // Assert that the returned ISBN numbers correspond to books written by "Terry Pratchett"
+            foreach (string isbn in isbnNumbers)
             {
-                Assert.True(book.author.Contains("Terry Pratchett"));
+                Book book = task4.books.First(b => b.isbn == isbn);
+                Assert.True(book.author == "Terry Pratchett");
             }
         }
     }

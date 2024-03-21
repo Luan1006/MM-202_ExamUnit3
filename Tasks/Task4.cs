@@ -42,7 +42,7 @@ namespace MM202ExamUnit3
             return result;
         }
 
-        public Book[] GetIsbnNumberByAuthor(string author)
+        public string[] GetIsbnNumberByAuthor(string author)
         {
             throw new NotImplementedException();
         }
