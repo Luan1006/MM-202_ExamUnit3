@@ -20,19 +20,20 @@ namespace MM202ExamUnit3
 
         public Book[] GetBooksStartingWithThe()
         {
-            books = books.Where(b => b.title.StartsWith("The")).ToList();
-            return books.ToArray();
+            Book[] result = books.Where(b => b.title.StartsWith("The")).ToArray();
+            return result;
         }
 
         public Book[] GetBooksWrittenByAuthorsWithATInTheirName()
         {
-            books = books.Where(b => b.author.Contains("t")).ToList();
-            return books.ToArray();
+            Book[] result = books.Where(b => b.author.Contains("t")).ToArray();
+            return result;
         }
 
         public Book[] GetBooksWrittenAfter1992()
         {
-            throw new NotImplementedException();
+            Book[] result = books.Where(b => b.publication_year > 1992).ToArray();
+            return result;
         }
     }
 }

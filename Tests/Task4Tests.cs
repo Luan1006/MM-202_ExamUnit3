@@ -87,6 +87,20 @@ namespace MM202ExamUnit3.Tests
             }
         }
 
+        [Fact]
+        public void GetBooksWrittenAfter1992_ReturnsEmptyJson_WhenEmptyJsonIsGiven()
+        {
+            // Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            // Act
+            Book[] books = task4.GetBooksWrittenAfter1992();
+
+            // Assert
+            Assert.Empty(books);
+        }
+
 
     }
 }
