@@ -29,5 +29,10 @@ namespace MM202ExamUnit3
             books = books.Where(b => b.author.Contains("t")).ToList();
             return books.ToArray();
         }
+
+        public Book[] GetBooksWrittenAfter1992()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
