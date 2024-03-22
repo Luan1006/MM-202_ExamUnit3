@@ -211,5 +211,23 @@ namespace MM202ExamUnit3.Tests
             //Assert
             Assert.Empty(books);
         }
+
+        [Fact]
+        public void SortListOfBooksChronologically_ReturnsSortedBooks_WhenJsonOfBooksAreGiven()
+        {
+            //Arrange
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            Book[] books = task4.SortListOfBooksChronologically();
+
+            //Assert
+            for (int i = 0; i < books.Length - 1; i++)
+            {
+                Assert.True(books[i].publication_year <= books[i + 1].publication_year);
+            }
+        }
     }
 }
