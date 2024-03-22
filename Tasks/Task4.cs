@@ -62,10 +62,10 @@ namespace MM202ExamUnit3
 
         public IEnumerable<IGrouping<string, Book>> GroupBooksByAuthorLastName()
         {
-            var result = books.GroupBy(b => 
+            IEnumerable<IGrouping<string, Book>> result = books.GroupBy(b => 
             {
-                var author = b.author.Split(" (Translated by")[0];
-                var lastName = author.Split(" ").Last();
+                string author = b.author.Split(" (Translated by")[0];
+                string lastName = author.Split(" ").Last();
                 return lastName;
             }).ToArray();
             return result;

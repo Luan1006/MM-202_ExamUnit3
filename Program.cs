@@ -112,12 +112,12 @@ namespace MM202ExamUnit3
 
             Task4 task4 = new Task4(jsonContent);
 
-            var groups = task4.GroupBooksByAuthorLastName();
+            IEnumerable<IGrouping<string, Book>> groups = task4.GroupBooksByAuthorLastName();
 
-            foreach (var group in groups)
+            foreach (IGrouping<string, Book> group in groups)
             {
                 Console.WriteLine($"Author Last Name: {group.Key}");
-                foreach (var book in group)
+                foreach (Book book in group)
                 {
                     Console.WriteLine($"Title: {book.title}");
                 }
