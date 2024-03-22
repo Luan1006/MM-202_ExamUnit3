@@ -57,8 +57,10 @@ namespace MM202ExamUnit3
                 PrintErrorMessage(e.Message);
             }
 
-            Console.WriteLine(WelcomeToTheBinaryTreeTraverser);
+            Thread.Sleep(5000);
+            Console.Clear();
 
+            Console.WriteLine(WelcomeToTheBinaryTreeTraverser);
             try
             {
                 Console.WriteLine(CallAPI);
@@ -106,6 +108,9 @@ namespace MM202ExamUnit3
             {
                 PrintErrorMessage(e.Message);
             }
+
+            Thread.Sleep(5000);
+            Console.Clear();
 
             Console.WriteLine(WelcomeToTheBookListProcessor);
             jsonFilePath = Path.Combine(ExampleFilesDirectory, BooksJsonExampleFile);
