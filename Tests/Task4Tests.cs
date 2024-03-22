@@ -264,5 +264,40 @@ namespace MM202ExamUnit3.Tests
                 }
             }
         }
+
+        [Fact]
+        public void GroupBooksByAuthorFirstName_ReturnsEmptyGroup_WhenEmptyJsonIsGiven()
+        {
+            //Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupBooksByAuthorFirstName();
+
+            //Assert
+            Assert.Empty(groupedBooks);
+        }
+
+        [Fact]
+        public void GroupBooksByAuthorFirstName_ReturnsGroupedBooks_WhenJsonOfBooksAreGiven()
+        {
+            //Arrange
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupBooksByAuthorFirstName();
+
+            //Assert
+            foreach (IGrouping<string, Book> group in groupedBooks)
+            {
+                foreach (Book book in group)
+                {
+                    Assert.Contains(group.Key, book.author);
+                }
+            }
+        }
     }
 }

@@ -70,5 +70,10 @@ namespace MM202ExamUnit3
             }).ToArray();
             return result;
         }
+
+        public IEnumerable<IGrouping<string, Book>> GroupBooksByAuthorFirstName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
