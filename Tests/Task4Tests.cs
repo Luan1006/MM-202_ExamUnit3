@@ -229,5 +229,40 @@ namespace MM202ExamUnit3.Tests
                 Assert.True(books[i].publication_year <= books[i + 1].publication_year);
             }
         }
+
+        [Fact]
+        public void GroupListOfBooksByAuthorsLastName_ReturnsEmptyGroup_WhenEmptyJsonIsGiven()
+        {
+            //Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupListOfBooksByAuthorsLastName();
+
+            //Assert
+            Assert.Empty(groupedBooks);
+        }
+
+        [Fact]
+        public void GroupListOfBooksByAuthorsLastName_ReturnsGroupedBooks_WhenJsonOfBooksAreGiven()
+        {
+            //Arrange
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupListOfBooksByAuthorsLastName();
+
+            //Assert
+            foreach (IGrouping<string, Book> group in groupedBooks)
+            {
+                foreach (Book book in group)
+                {
+                    Assert.Contains(group.Key, book.author);
+                }
+            }
+        }
     }
 }

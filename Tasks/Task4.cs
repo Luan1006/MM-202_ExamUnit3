@@ -59,5 +59,10 @@ namespace MM202ExamUnit3
             Book[] result = books.OrderBy(b => b.publication_year).ToArray();
             return result;
         }
+
+        public IEnumerable<IGrouping<string, Book>> GroupListOfBooksByAuthorsLastName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
