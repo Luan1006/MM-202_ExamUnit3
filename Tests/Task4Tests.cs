@@ -231,21 +231,21 @@ namespace MM202ExamUnit3.Tests
         }
 
         [Fact]
-        public void GroupListOfBooksByAuthorsLastName_ReturnsEmptyGroup_WhenEmptyJsonIsGiven()
+        public void GroupBooksByAuthorLastName_ReturnsEmptyGroup_WhenEmptyJsonIsGiven()
         {
             //Arrange
             string jsonContent = "[]";
             Task4 task4 = new Task4(jsonContent);
 
             //Act
-            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupListOfBooksByAuthorsLastName();
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupBooksByAuthorLastName();
 
             //Assert
             Assert.Empty(groupedBooks);
         }
 
         [Fact]
-        public void GroupListOfBooksByAuthorsLastName_ReturnsGroupedBooks_WhenJsonOfBooksAreGiven()
+        public void GroupBooksByAuthorLastName_ReturnsGroupedBooks_WhenJsonOfBooksAreGiven()
         {
             //Arrange
             string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
@@ -253,7 +253,7 @@ namespace MM202ExamUnit3.Tests
             Task4 task4 = new Task4(jsonContent);
 
             //Act
-            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupListOfBooksByAuthorsLastName();
+            IEnumerable<IGrouping<string, Book>> groupedBooks = task4.GroupBooksByAuthorLastName();
 
             //Assert
             foreach (IGrouping<string, Book> group in groupedBooks)

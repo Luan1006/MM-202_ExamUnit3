@@ -105,6 +105,24 @@ namespace MM202ExamUnit3
             {
                 PrintErrorMessage(e.Message);
             }
+
+            Console.WriteLine("\nWelcome to the Book List Processor!\n");
+            jsonFilePath = Path.Combine("ExampleFiles", "books.json");
+            jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+
+            Task4 task4 = new Task4(jsonContent);
+
+            var groups = task4.GroupBooksByAuthorLastName();
+
+            foreach (var group in groups)
+            {
+                Console.WriteLine($"Author Last Name: {group.Key}");
+                foreach (var book in group)
+                {
+                    Console.WriteLine($"Title: {book.title}");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

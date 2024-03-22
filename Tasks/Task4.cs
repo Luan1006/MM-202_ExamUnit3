@@ -60,9 +60,15 @@ namespace MM202ExamUnit3
             return result;
         }
 
-        public IEnumerable<IGrouping<string, Book>> GroupListOfBooksByAuthorsLastName()
+        public IEnumerable<IGrouping<string, Book>> GroupBooksByAuthorLastName()
         {
-            throw new NotImplementedException();
+            var result = books.GroupBy(b => 
+            {
+                var author = b.author.Split(" (Translated by")[0];
+                var lastName = author.Split(" ").Last();
+                return lastName;
+            }).ToArray();
+            return result;
         }
     }
 }
