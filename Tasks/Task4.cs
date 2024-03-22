@@ -47,5 +47,10 @@ namespace MM202ExamUnit3
             string[] result = books.Where(b => b.author == author).Select(b => b.isbn).ToArray();
             return result;
         }
+
+        public Book[] SortListOfBooksAlphabetically()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

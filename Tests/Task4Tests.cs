@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Xunit;
 
 namespace MM202ExamUnit3.Tests
@@ -165,6 +164,20 @@ namespace MM202ExamUnit3.Tests
                 Book book = task4.books.First(b => b.isbn == isbn);
                 Assert.Contains(author, book.author);
             }
+        }
+
+        [Fact]
+        public void SortListOfBooksAlphabetically_ReturnsEmptyList_WhenEmptyJsonIsGiven()
+        {
+            //Arrange
+            string jsonContent = "[]";
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            Book[] books = task4.SortListOfBooksAlphabetically();
+
+            //Assert
+            Assert.Empty(books);
         }
     }
 }
