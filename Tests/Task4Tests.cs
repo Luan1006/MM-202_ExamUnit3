@@ -179,5 +179,23 @@ namespace MM202ExamUnit3.Tests
             //Assert
             Assert.Empty(books);
         }
+
+        [Fact]
+        public void SortListOfBooksAlphabetically_ReturnsSortedBooks_WhenJsonOfBooksAreGiven()
+        {
+            //Arrange
+            string jsonFilePath = Path.Combine("..", "..", "..", "ExampleFiles", "books.json");
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            Task4 task4 = new Task4(jsonContent);
+
+            //Act
+            Book[] books = task4.SortListOfBooksAlphabetically();
+
+            //Assert
+            for (int i = 0; i < books.Length - 1; i++)
+            {
+                Assert.True(string.Compare(books[i].title, books[i + 1].title) <= 0);
+            }
+        }
     }
 }
