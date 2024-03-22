@@ -29,11 +29,11 @@ namespace MM202ExamUnit3
 
             Console.WriteLine(WelcomeToTheBinaryTreeTraverser);
 
-            await FindTreeInfoWithAPICall(BSTAPIURL);
+            await Task3.FindTreeInfoWithAPICall(BSTAPIURL);
 
             jsonFilePath = Path.Combine(ExampleFilesDirectory, NodesJsonExampleFile);
 
-            await FindTreeInfoWithJsonFile(jsonFilePath);
+            await Task3.FindTreeInfoWithJsonFile(jsonFilePath);
 
             Thread.Sleep(5000);
             Console.Clear();
@@ -54,60 +54,6 @@ namespace MM202ExamUnit3
                     Console.WriteLine(Title + book.title);
                 }
                 Console.WriteLine();
-            }
-        }
-
-        private static async Task FindTreeInfoWithJsonFile(string jsonFilePath)
-        {
-            try
-            {
-                Console.WriteLine(ReadJSON);
-
-                jsonFilePath = Path.Combine(ExampleFilesDirectory, NodesJsonExampleFile);
-                jsonContent = await File.ReadAllTextAsync(jsonFilePath);
-
-                Task3 task3 = new Task3();
-
-                Console.WriteLine(BinaryTree, jsonContent);
-
-                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(jsonContent);
-
-                Task3.TreeInfo treeInfo = task3.Traverse(root);
-
-                Console.WriteLine(Sum, treeInfo.Sum);
-                Console.WriteLine(DeepestLevel, treeInfo.Depth);
-                Console.WriteLine(Nodes, treeInfo.Count);
-            }
-            catch (Exception e)
-            {
-                PrintErrorMessage(e.Message);
-            }
-        }
-
-        private static async Task FindTreeInfoWithAPICall(string BSTAPIURL)
-        {
-            try
-            {
-                Console.WriteLine(CallAPI);
-
-                HttpResponseMessage response = await apiService.GetApiResponse(BSTAPIURL);
-                string responseBody = await response.Content.ReadAsStringAsync();
-
-                Task3 task3 = new Task3();
-
-                Console.WriteLine(BinaryTree, responseBody);
-
-                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(responseBody);
-
-                Task3.TreeInfo treeInfo = task3.Traverse(root);
-
-                Console.WriteLine(Sum, treeInfo.Sum);
-                Console.WriteLine(DeepestLevel, treeInfo.Depth);
-                Console.WriteLine(Nodes, treeInfo.Count);
-            }
-            catch (HttpRequestException e)
-            {
-                PrintErrorMessage(e.Message);
             }
         }
     }

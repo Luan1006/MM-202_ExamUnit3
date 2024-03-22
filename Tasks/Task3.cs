@@ -1,3 +1,8 @@
+using System.Text.Json;
+using MM202ExamUnit3.Utils;
+using static MM202ExamUnit3.Utils.Constants;
+using static MM202ExamUnit3.Utils.Print;
+
 namespace MM202ExamUnit3
 {
     public class Task3
@@ -32,6 +37,61 @@ namespace MM202ExamUnit3
             int count = LeftNode.Count + RightNode.Count + 1;
 
             return new TreeInfo { Sum = sum, Depth = depth, Count = count };
+        }
+
+        public static async Task FindTreeInfoWithJsonFile(string jsonFilePath)
+        {
+            try
+            {
+                Console.WriteLine(ReadJSON);
+
+                jsonFilePath = Path.Combine(ExampleFilesDirectory, NodesJsonExampleFile);
+                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+
+                Task3 task3 = new Task3();
+
+                Console.WriteLine(BinaryTree, jsonContent);
+
+                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(jsonContent);
+
+                Task3.TreeInfo treeInfo = task3.Traverse(root);
+
+                Console.WriteLine(Sum, treeInfo.Sum);
+                Console.WriteLine(DeepestLevel, treeInfo.Depth);
+                Console.WriteLine(Nodes, treeInfo.Count);
+            }
+            catch (Exception e)
+            {
+                PrintErrorMessage(e.Message);
+            }
+        }
+
+        public static async Task FindTreeInfoWithAPICall(string BSTAPIURL)
+        {
+            ApiService apiService = new ApiService(new HttpClient());
+            try
+            {
+                Console.WriteLine(CallAPI);
+
+                HttpResponseMessage response = await apiService.GetApiResponse(BSTAPIURL);
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                Task3 task3 = new Task3();
+
+                Console.WriteLine(BinaryTree, responseBody);
+
+                Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(responseBody);
+
+                Task3.TreeInfo treeInfo = task3.Traverse(root);
+
+                Console.WriteLine(Sum, treeInfo.Sum);
+                Console.WriteLine(DeepestLevel, treeInfo.Depth);
+                Console.WriteLine(Nodes, treeInfo.Count);
+            }
+            catch (HttpRequestException e)
+            {
+                PrintErrorMessage(e.Message);
+            }
         }
     }
 }
