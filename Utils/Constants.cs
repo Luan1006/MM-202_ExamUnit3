@@ -9,7 +9,7 @@ namespace MM202ExamUnit3.Utils
         public const string CallAPI = "Calling the API...";
         public const string JaggedArray = "Jagged array: {0}";
         public const string FlattenedArray = "Flattened array: {0}";
-        public const string ReadJSON = "Reading the JSON file...";
+        public const string ReadJSON = "\nReading the JSON file...";
         public const string ExampleFilesDirectory = "ExampleFiles";
         public const string ArraysJsonExampleFile = "arrays.json";
         public const string WelcomeToTheBinaryTreeTraverser= "Welcome to the Binary Tree Traverser!\n";

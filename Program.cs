@@ -9,7 +9,6 @@ namespace MM202ExamUnit3
     {
         static readonly HttpClient client = new HttpClient();
         static readonly ApiService apiService = new ApiService(client);
-        static readonly ArrayProcessor arrayProcessor = new ArrayProcessor();
         static string jsonFilePath = "";
         static string jsonContent = "";
 
@@ -19,48 +18,17 @@ namespace MM202ExamUnit3
 
             Console.WriteLine(WelcomeToJaggedArrayFlattener);
 
-            try
-            {
-                Console.WriteLine(CallAPI);
+            await Task2.FlattenArrayWithAPICall(JaggedAPIURL);
 
-                HttpResponseMessage response = await apiService.GetApiResponse(Constants.JaggedAPIURL);
-                string responseBody = await response.Content.ReadAsStringAsync();
-                JsonDocument doc = apiService.ParseJsonString(responseBody);
+            jsonFilePath = Path.Combine(ExampleFilesDirectory, ArraysJsonExampleFile);
 
-                Console.WriteLine(JaggedArray, doc.RootElement);
-
-                int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
-                string arrayToWrite = string.Join(", ", flattenedArray);
-                Console.WriteLine(FlattenedArray, arrayToWrite);
-            }
-            catch (HttpRequestException e)
-            {
-                PrintErrorMessage(e.Message);
-            }
-
-            try
-            {
-                Console.WriteLine(ReadJSON);
-
-                jsonFilePath = Path.Combine(ExampleFilesDirectory, ArraysJsonExampleFile);
-                jsonContent = await File.ReadAllTextAsync(jsonFilePath);
-                JsonDocument doc = JsonDocument.Parse(jsonContent);
-
-                Console.WriteLine(JaggedArray, doc.RootElement);
-
-                int[] flattenedArray = arrayProcessor.FlattenJsonArray(doc);
-                string arrayToWrite = string.Join(", ", flattenedArray);
-                Console.WriteLine(FlattenedArray, arrayToWrite);
-            }
-            catch (Exception e)
-            {
-                PrintErrorMessage(e.Message);
-            }
+            await Task2.FlattenArrayWithJsonFile(jsonFilePath);
 
             Thread.Sleep(5000);
             Console.Clear();
 
             Console.WriteLine(WelcomeToTheBinaryTreeTraverser);
+
             try
             {
                 Console.WriteLine(CallAPI);
