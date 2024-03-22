@@ -22,6 +22,7 @@ namespace MM202ExamUnit3
             public int Depth { get; set; }
             public int Count { get; set; }
         }
+
         public TreeInfo Traverse(Node node)
         {
             if (node == null)
@@ -50,9 +51,16 @@ namespace MM202ExamUnit3
 
                 Task3 task3 = new Task3();
 
-                Console.WriteLine(BinaryTree, jsonContent);
-
                 Task3.Node root = JsonSerializer.Deserialize<Task3.Node>(jsonContent);
+
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = false
+                };
+
+                string oneLineJson = JsonSerializer.Serialize(root, options);
+
+                Console.WriteLine(BinaryTree, oneLineJson);
 
                 Task3.TreeInfo treeInfo = task3.Traverse(root);
 
