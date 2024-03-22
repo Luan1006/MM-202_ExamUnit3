@@ -53,5 +53,10 @@ namespace MM202ExamUnit3
             Book[] result = books.OrderBy(b => b.title).ToArray();
             return result;
         }
+
+        internal Book[] SortListOfBooksChronologically()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
