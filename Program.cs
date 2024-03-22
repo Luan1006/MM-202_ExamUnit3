@@ -39,22 +39,10 @@ namespace MM202ExamUnit3
             Console.Clear();
 
             Console.WriteLine(WelcomeToTheBookListProcessor);
+
             jsonFilePath = Path.Combine(ExampleFilesDirectory, BooksJsonExampleFile);
-            jsonContent = await File.ReadAllTextAsync(jsonFilePath);
 
-            Task4 task4 = new Task4(jsonContent);
-
-            IEnumerable<IGrouping<string, Book>> lastNameGroups = task4.GroupBooksByAuthorLastName();
-
-            foreach (IGrouping<string, Book> group in lastNameGroups)
-            {
-                Console.WriteLine(AuthorLastName + group.Key);
-                foreach (Book book in group)
-                {
-                    Console.WriteLine(Title + book.title);
-                }
-                Console.WriteLine();
-            }
+            await Task4.GroupBooksByAuthorLastNameUsingJsonFile(jsonFilePath);
         }
     }
 }

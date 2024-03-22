@@ -1,4 +1,5 @@
 using System.Text.Json;
+using MM202ExamUnit3.Utils;
 
 namespace MM202ExamUnit3
 {
@@ -68,7 +69,7 @@ namespace MM202ExamUnit3
                 string lastName = author.Split(" ").Last();
                 return lastName;
             }).ToArray();
-            
+
             return result;
         }
 
@@ -81,6 +82,25 @@ namespace MM202ExamUnit3
             }).ToArray();
 
             return result;
+        }
+
+        public static async Task GroupBooksByAuthorLastNameUsingJsonFile(string jsonFilePath)
+        {
+            string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+
+            Task4 task4 = new Task4(jsonContent);
+
+            IEnumerable<IGrouping<string, Book>> lastNameGroups = task4.GroupBooksByAuthorLastName();
+
+            foreach (IGrouping<string, Book> group in lastNameGroups)
+            {
+                Console.WriteLine(Constants.AuthorLastName + group.Key);
+                foreach (Book book in group)
+                {
+                    Console.WriteLine(Constants.Title + book.title);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
