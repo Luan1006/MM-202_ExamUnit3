@@ -62,18 +62,25 @@ namespace MM202ExamUnit3
 
         public IEnumerable<IGrouping<string, Book>> GroupBooksByAuthorLastName()
         {
-            IEnumerable<IGrouping<string, Book>> result = books.GroupBy(b => 
+            IEnumerable<IGrouping<string, Book>> result = books.GroupBy(b =>
             {
                 string author = b.author.Split(" (Translated by")[0];
                 string lastName = author.Split(" ").Last();
                 return lastName;
             }).ToArray();
+            
             return result;
         }
 
         public IEnumerable<IGrouping<string, Book>> GroupBooksByAuthorFirstName()
         {
-            throw new NotImplementedException();
+            IEnumerable<IGrouping<string, Book>> result = books.GroupBy(b =>
+            {
+                string firstName = b.author.Split(" ").First();
+                return firstName;
+            }).ToArray();
+
+            return result;
         }
     }
 }
