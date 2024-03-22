@@ -7,5 +7,12 @@ namespace MM202ExamUnit3.Utils
             Console.WriteLine("\nException Caught!");
             Console.WriteLine("Message :{0} ", error);
         }
+
+        public static void PrintPauseMessage()
+        {
+            Console.WriteLine("Loading next task...");
+            Thread.Sleep(5000);
+            Console.Clear();
+        }
     }
 }

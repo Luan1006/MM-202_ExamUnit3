@@ -10,7 +10,6 @@ namespace MM202ExamUnit3
         static readonly HttpClient client = new HttpClient();
         static readonly ApiService apiService = new ApiService(client);
         static string jsonFilePath = "";
-        static string jsonContent = "";
 
         static async Task Main()
         {
@@ -24,8 +23,7 @@ namespace MM202ExamUnit3
 
             await Task2.FlattenArrayWithJsonFile(jsonFilePath);
 
-            Thread.Sleep(5000);
-            Console.Clear();
+            PrintPauseMessage();
 
             Console.WriteLine(WelcomeToTheBinaryTreeTraverser);
 
@@ -35,8 +33,7 @@ namespace MM202ExamUnit3
 
             await Task3.FindTreeInfoWithJsonFile(jsonFilePath);
 
-            Thread.Sleep(5000);
-            Console.Clear();
+            PrintPauseMessage();
 
             Console.WriteLine(WelcomeToTheBookListProcessor);
 
