@@ -1,7 +1,6 @@
 using System.Text.Json;
 using MM202ExamUnit3.Utils;
 using static MM202ExamUnit3.Utils.Constants;
-using static MM202ExamUnit3.Utils.ApiService;
 
 namespace MM202ExamUnit3
 {
