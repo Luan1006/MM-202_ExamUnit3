@@ -10,7 +10,7 @@ namespace MM202ExamUnit3.Utils
 
         public static void PrintPauseMessage()
         {
-            Console.WriteLine("Loading next task...");
+            Console.WriteLine("\n\nLoading next task...");
             Thread.Sleep(5000);
             Console.Clear();
         }
