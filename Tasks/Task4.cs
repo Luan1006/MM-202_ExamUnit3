@@ -50,7 +50,8 @@ namespace MM202ExamUnit3
 
         public Book[] SortListOfBooksAlphabetically()
         {
-            throw new NotImplementedException();
+            Book[] result = books.OrderBy(b => b.title).ToArray();
+            return result;
         }
     }
 }
